@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>张一飞博客</title>
+	<link rel="stylesheet" href="/blogmvc/App/Home/View/Public/Css/common.css" />
+	<script type="text/JavaScript" src='/blogmvc/App/Home/View/Public/Js/jquery-1.7.2.min.js'></script>
+	<script type="text/JavaScript" src='/blogmvc/App/Home/View/Public/Js/common.js'></script>
+	<link rel="stylesheet" href="/blogmvc/App/Home/View/Public/Css/show.css" />
+</head>
+<body>
+<!--头部-->
+	<div class='top-list-wrap'>
+		<div class='top-list'>
+			<ul class='l-list'>
+				<li><a href="http://www.hqcfly.com" target='_blank'>张一飞博客</a></li>
+			</ul>
+			<!-- <ul class='r-list'>
+				<li><a href="http://www.nicewen.com/lizhi/" target='_blank'>励志</a></li>
+				<li><a href="http://www.nicewen.com/jingdianyulu/" target='_blank'>语录</a></li>
+			</ul> -->
+		</div>
+	</div>
+
+
+	<div class='top-search-wrap'>
+		<div class='top-search'>
+			<a href="http://www.hqcfly.com" target='_blank' class='logo'>
+				<img src="/blogmvc/App/Home/View/Public/Images/logo.gif"/>
+			</a>
+			<div class='search-wrap'>
+				<form action="/blogmvc/Home/Search/search.html" method='get'>
+					<input type="text" name='keyword' class='search-content'/>
+					<input type="submit" name='search' value='搜索'/>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class='top-nav-wrap'>
+		<ul class='nav-lv1'>
+			<li class='nav-lv1-li'>
+				<a href="/" class='top-cate'>博客首页</a>
+			</li>
+			
+			<li class='nav-lv1-li'>
+				<a href="/blogmvc/list-50.html" class='top-cate'>个人简介</a>
+							</li><li class='nav-lv1-li'>
+				<a href="/blogmvc/list-52.html" class='top-cate'>设计与绘画</a>
+							</li><li class='nav-lv1-li'>
+				<a href="/blogmvc/list-51.html" class='top-cate'>我的工作</a>
+				<ul>
+					<li><a href="/blogmvc/list-58.html">数据可视化画</a></li><li><a href="/blogmvc/list-57.html">后端技术</a></li><li><a href="/blogmvc/list-56.html">前端技术</a></li><li><a href="/blogmvc/list-55.html">项目展示</a></li>				</ul>			</li><li class='nav-lv1-li'>
+				<a href="/blogmvc/list-53.html" class='top-cate'>生活点滴</a>
+				<ul>
+					<li><a href="/blogmvc/list-60.html">团队建设</a></li><li><a href="/blogmvc/list-59.html">程序员的自我修养</a></li>				</ul>			</li><li class='nav-lv1-li'>
+				<a href="/blogmvc/list-54.html" class='top-cate'>读书频道</a>
+							</li><li class='nav-lv1-li'>
+				<a href="/blogmvc/list-61.html" class='top-cate'>前端代码与禅</a>
+							</li>		</ul>
+	</div>
+
+<!--主体-->
+	<div class='main'>
+		<div class='main-left'>
+			<div class='location'>
+				<a href="/blogmvc">首页</a>>
+				<a href="/blogmvc/list-51.html">我的工作</a>&gt;<a href="/blogmvc/list-56.html">前端技术</a>			</div>
+			<div class="title">
+				<p>SVG文字交互区域</p>
+				<div>
+					<span class='fl'>发布于：2016年06月30日</span>
+					<span class='fr'>已被阅读100次</span>
+					<!--
+					<span class='fr' id="js_click" data-url="/blogmvc/Home/Show/click/id/62.html">已被阅读<strong class="click_num"></strong>次</span>
+					-->
+				</div>
+			</div>
+			<div class='content'>
+				<p>在很多情况下，我们使用d3（或者其他SVG类库）创建交互式图表时，都需要将html元素插入到SVG元素上。典型的例子，就是图表中有需要交互
+式修改文字的地方，当用户点击了某个svg text元素，这里我们需要将一个html元素 
+input“放进”SVG元素中，并在这个input元素上绑定事件，从而快速更改文字。而svg本身元素类型是提供不了类似的功能的，所以用到html
+元素是必须的。</p><p>SVG元素主要有如下几类：svg(定义svg文档片段), rect(定义矩形), 
+circle(定义圆形)，ellipse(定义椭圆)，path(路径)，line(线)，ploygon(多边形)，text(文
+字)，title(标题), desc(描述)， g(群组)， defs(参考元素)， 
+image(图片元素)。详见：http://www.w3school.com.cn/svg/svg_reference.asp</p><p><strong>但是，直接将html元素插入SVG元素内是不可以显示的。</strong></p><p>如<a href="http://stackoverflow.com/questions/11322711/d3js-append-div">下例</a>，使用d3js设置text元素是可以显示的，但是如果把插入的元素改为div，则div元素虽然可以创建，但是不可见。</p><pre class="brush:js;toolbar:false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.attr(&quot;dx&quot;,&nbsp;16)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.attr(&quot;dy&quot;,&nbsp;&quot;.0em&quot;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.text(function(d)&nbsp;{&nbsp;return&nbsp;d.name&nbsp;});</pre><h2>html object in SVG</h2><p>&nbsp;</p><p>这是使用SVG绘图时经常遇到的问题。有两个解决办法：</p><p>1.将div使用SVG元素foreignObject包裹。</p><p>这个办法的好处是，通过foreignObject，可以将div元素嵌入SVG片段来处理。详见：http://ajaxian.com/archives/foreignobject-hey-youve-got-html-in-my-svg.</p><p>但是此方法不兼容IE任何版本，详见https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/foreignObject</p><p>2.将div定义为浮动层，然后使用left, top属性,等计算位置。</p><p>用这种方法制作文字提示框，就像这样：</p><pre class="brush:js;toolbar:false">d3.select(&quot;#nytg-tooltip&quot;).style(&#39;top&#39;,ypos+&quot;px&quot;).style(&#39;left&#39;,xpos+&quot;px&quot;).style(&#39;display&#39;,&#39;block&#39;);</pre><h2>结论：</h2><p>&nbsp;</p><p>对于要进行交互操作的文字区域，通常要借助html元素的力量来实现效果。将html元素加入SVG有两种方法，其一是将div使用SVG元素foreignObject包裹，其二是将div定义为浮动层，然后使用left, top属性,等计算位置。</p><p>这里还要特别提到一个案例：在线思维导图软件mindmo也是这样处理文字区域的交互问题的。它将所有的节点文字区域都用浮动的div显示，使用
+top,left属性来控制其位置；而svg只用于路径显示。例如：https://www.mindomo.com/mindmap
+/cd8215d5e5b1427c9c22b4abc6aae5d6</p><p><br/></p>			</div>
+		</div>
+	<!--主体右侧-->
+		<div class='main-right'>
+			<dl>
+				<dt>热门博文</dt>
+				<dd>
+					<a href="/blogmvc/show-59.html">我看过的计算机书籍</a>
+					<span>(101)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-60.html">自我介绍</a>
+					<span>(101)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-64.html">河南大学软件学院MV设计稿</a>
+					<span>(101)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-65.html">[转]如何每天睡够8小时，还能做一堆事情？</a>
+					<span>(101)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-68.html">前端代码与禅</a>
+					<span>(101)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-61.html">Node.js和Angular.js应用</a>
+					<span>(100)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-62.html">SVG文字交互区域</a>
+					<span>(100)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-63.html">大学期间素描</a>
+					<span>(100)</span>
+				</dd>			</dl>
+
+			<dl>
+				<dt>最发布发</dt>
+				<dd>
+					<a href="/blogmvc/show-68.html">前端代码与禅</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-65.html">[转]如何每天睡够8小时，还能做一堆事情？</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-64.html">河南大学软件学院MV设计稿</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-63.html">大学期间素描</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-62.html">SVG文字交互区域</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-61.html">Node.js和Angular.js应用</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-60.html">自我介绍</a>
+					<span>(06-30)</span>
+				</dd><dd>
+					<a href="/blogmvc/show-59.html">我看过的计算机书籍</a>
+					<span>(06-30)</span>
+				</dd>			</dl>
+
+			<dl>
+				<dt>友情连接</dt>
+				<dd>
+					<a href="http://vision.stanford.edu/index.html" target="_blank">斯坦福大学可视化实验室</a>
+				</dd><dd>
+					<a href="http://freemind.pluskid.org/" target="_blank">机器学习</a>
+				</dd><dd>
+					<a href="http://uehtml.uemo.net/" target="_blank">UEmo设计网站</a>
+				</dd>			</dl>
+		</div>
+	
+	</div>
+
+
+<!--�ײ�-->
+	<div class='bottom'>
+		<div></div>
+	</div>
+</body>
+</html>
